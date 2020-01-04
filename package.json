@@ -1,0 +1,58 @@
+{
+  "name": "radio-app",
+  "version": "1.0.0",
+  "description": "React based Radio App",
+  "main": "App.jsx",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create": "webpack",
+    "start": "webpack-dev-server  --mode development"
+  },
+  "keywords": [
+    "radio",
+    "radio app",
+    "react",
+    "react application"
+  ],
+  "author": "Sofi",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.0",
+    "react-hot-loader": "^4.3.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/midnight-sl/radio-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/midnight-sl/radio-app/issues"
+  },
+  "homepage": "https://github.com/midnight-sl/radio-app#readme"
+}
