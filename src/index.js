@@ -1,5 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App.js";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import RadioContextProvider from './RadioContext';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import './styles/App.css'
+
+ReactDOM.render(
+  <RadioContextProvider>
+    <App />
+  </RadioContextProvider>,
+  document.getElementById("root")
+);
