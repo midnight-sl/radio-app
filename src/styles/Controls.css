@@ -1,0 +1,25 @@
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.volume-down, .volume-up {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.volume-down img, .volume-up img {
+  height: 100%;
+  width: auto;
+}
+.station-logo {
+  height: 55px ;
+}
+
+@media screen and (max-width: 600px) {
+ 
+  .controls {
+    width: 60%;
+  }
+}

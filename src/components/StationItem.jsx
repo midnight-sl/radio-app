@@ -1,31 +1,84 @@
-import React, {useContext, useState} from 'react';
-import {RadioContext} from '../RadioContext';
+import React, {useContext, useState, useEffect} from 'react';
+import {RadioContext} from '../containers/RadioContext';
+import ReactPlayer from 'react-player'
+import Controls from './Controls';
+import callSpecificTracklist from '../api/callSpecificTracklist';
 import '../styles/StationItem.css';
 
-export default function StationItem({ id, title, ...children }) {
-  const {currentStation, toggleControls } = useContext(RadioContext);
+export default function StationItem({ id, title, type, description, tracklist, logo, ...props }) {
+  const {currentStation, soundLevel, toggleControls, colorClassName } = useContext(RadioContext);
+  
   const [showExtraInfo, setShowExtraInfo] = useState(false);
+  const [isPlayerActive, setPlayerActive] = useState(false);  
+  
+  const [trackData, setTrackData] = useState([]);
+  const [songIndex, setSongIndex] = useState(0);
+  
+  const stationClassName = (currentStation === id) ? 'station-item active' : 'station-item';
+  
+  const getSongURLs = () => {
+    callSpecificTracklist(id)
+    .then(result => {
+      setTrackData(result.data);
+    }, 
+    error => {
+      console.error(error);
+    });  
+  }
 
-  const infoBlock = '<p>You are listening to {title} on Deezer {type}. {description} can be reached online via {tracklist} </p>'
+  useEffect(() => {
+    getSongURLs();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[currentStation])
 
-  const stationClassName = currentStation === id ? 'station-item active' : 'station-item';
+
+  const tracksInfo = trackData.map(({ album, artist, link, title }) => {
+    const playlist = { artist: artist.name, songTitle: title, album: album.title, link: link, };
+    return playlist;
+  });
+  
+  const infoBlock = 
+  <>
+    <p>You are listening to {title} music on Deezer {type}. {(description) ? description : 'It'} can be reached online via <a href={tracklist}>{tracklist}</a></p>
+    <p>{title} Playlist:</p>
+    <ol>
+      {tracksInfo.map(({ artist, songTitle, album }, key) => <li key={key}>{artist} - "{songTitle}" from "{album}" album.</li> )}
+    </ol>
+  </>
+
+  const playerLink = tracksInfo[songIndex] ? (tracksInfo[songIndex].link) : "https://www.youtube.com/watch?v=AFMuxl3cSU4";
+
+  const handleExtraInfoClick = () => setShowExtraInfo(!showExtraInfo);
+  const handlePlayClick = () => setPlayerActive(!isPlayerActive);
+  const handleNextClick = () => setSongIndex(songIndex + 1);
 
   return (
-    <div className={stationClassName}>
-      <div 
-        className="station-item-header"
-        onClick={() => toggleControls(id)}
+    <div className={`${stationClassName} ${colorClassName }`}>
+      <div className="station-item-header"
+        onClick={ () => toggleControls(id) }
         role="button"
-      >
+        >
         <div className="station-base-info">
-          <span className="station-name" onClick={ () => setShowExtraInfo(!showExtraInfo) }>{title}</span>
-          {/* <span className="station-frequency">{frequency}</span> */}
+          <span className="station-name" >{title ? title : 'Some Title'}</span>
+          <button className="play-btn" onClick={handlePlayClick}><img src="../icons/play.png" alt="play button"/></button>
+          <button className="extra-info-btn" onClick={handleExtraInfoClick}><i>More information</i> </button>
         </div>       
-        <div className={ showExtraInfo ? 'info-active' : 'info-hided' }>
-          {infoBlock}
-        </div>
+        <Controls 
+          className="station-controls" 
+          logo={logo} 
+        /> 
       </div>
-      <div className="station-controls">{children}</div>
+      <div className={ showExtraInfo ? 'info-active' : 'info-hidden' }>
+        {infoBlock}
+      </div>
+      <div className={isPlayerActive ? 'player' : 'player-hidden' }>
+        <ReactPlayer 
+          url={playerLink} 
+          playing={(isPlayerActive && currentStation) ? true : false}
+          volume= {soundLevel}
+        />
+      </div>
+      <button className="next" onClick={handleNextClick}>Play Next Song</button>
     </div>
   );
 }

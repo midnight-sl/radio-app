@@ -25,7 +25,8 @@
   "dependencies": {
     "react": "0.0.0-b53ea6ca0",
     "react-dom": "0.0.0-b53ea6ca0",
-    "react-hot-loader": "^4.3.11"
+    "react-hot-loader": "^4.3.11",
+    "react-player": "^1.14.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",

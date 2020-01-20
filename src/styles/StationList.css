@@ -1,0 +1,10 @@
+.stations-list {
+  width: 70%;
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .stations-list {
+    width: 96%;
+  }
+}

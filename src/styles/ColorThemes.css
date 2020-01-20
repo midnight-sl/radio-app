@@ -1,0 +1,17 @@
+.dark-theme.color-theme {
+  background-color: #000000;
+  color: #ffffff;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
+}
+.neon-theme.color-theme {
+  background-color: #8A2BE2;
+  color: #FF1493;
+  border: 2px solid #7FFF00;
+  box-shadow: 0px 0px 10px 5px rgba(127,225,0,0.75);
+}
+.pastel-theme.color-theme {
+  background-color: #FEC8D8;
+  color: #957DAD;
+  border: 2px solid #D291BC;
+  box-shadow: 0px 0px 10px 5px rgba(210,145,188,0.75);
+}

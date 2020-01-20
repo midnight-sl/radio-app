@@ -1,0 +1,58 @@
+.header {
+  display: flex;
+  width: 70%;
+  background-color: #fff;
+  color: #000000;
+  margin: auto;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+p {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.powerButton {
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  border-color: transparent;
+  
+}
+.powerButton img {
+  height: 100%;
+}
+
+.colorTheme {
+  display: flex;
+  align-content: flex-end;
+}
+
+.colorTheme button {
+  border-radius: 2px;
+  padding: 3px;
+  margin: 3px;
+  font-weight: 700;
+  padding: 0 10px;
+  box-shadow:  0px 0px 10px 1px rgba(0,0,0,0.75);
+}
+
+.dark {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.neon {
+  background-color: #8A2BE2;
+  color: #FF1493;
+  border: 1px solid #8A2BE2;
+}
+
+.pastel {
+  background-color:#FEC8D8;
+  color: #957DAD;
+  border: 1px solid #FEC8D8;
+}
