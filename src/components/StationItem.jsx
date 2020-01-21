@@ -22,7 +22,7 @@ export default function StationItem({ id, title, type, description, tracklist, l
       setTrackData(result.data);
     }, 
     error => {
-      console.error(error);
+      console.error(error, "Error in URL fetch");
     });  
   }
 

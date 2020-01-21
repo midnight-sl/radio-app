@@ -24,8 +24,8 @@ export default function RadioContextProvider(props) {
       setStations(result.data);
       setIsInfoLoading(false);
     }, 
-    error => {
-      console.error(error);
+    (error) => {
+      console.error(error, "Error in Stations Info fetch");
       setIsInfoLoading(false);
       setError(true);
     });    
