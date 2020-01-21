@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c36c2a95389f1be7e16a6a303dfe5478",
+    "revision": "6dc74353025175e5ac401401dd8cccee",
     "url": "/radio-app/index.html"
   },
   {
-    "revision": "45f4acd84a4d8d52797e",
+    "revision": "22c9f9754fd874b074cb",
     "url": "/radio-app/static/css/main.e116935b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/radio-app/static/js/2.e41681c1.chunk.js.LICENSE"
   },
   {
-    "revision": "45f4acd84a4d8d52797e",
-    "url": "/radio-app/static/js/main.f21424af.chunk.js"
+    "revision": "22c9f9754fd874b074cb",
+    "url": "/radio-app/static/js/main.625720f1.chunk.js"
   },
   {
     "revision": "63ec8977eaebd38029c9",
