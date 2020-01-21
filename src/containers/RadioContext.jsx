@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-// import PropTypes from 'prop-types';
 import callRadioService from '../api/callRadioService';
 
 export const RadioContext = React.createContext(null);
@@ -17,7 +16,6 @@ export default function RadioContextProvider(props) {
 
   useEffect(() => {
     getStationsInfo(); 
-    console.log(isThemeDark,isThemeNeon,isThemePastel, "isThemeDark,isThemeNeon,isThemePastel");
   },[isThemeDark,isThemeNeon,isThemePastel]);
 
   const getStationsInfo = () => {
@@ -85,21 +83,15 @@ export default function RadioContextProvider(props) {
   const toggleVolumeUp = () => {
     if (soundLevel <= (0.9)) {
     setSoundLevel(soundLevel + 0.1);
-    console.log('the sound was turned up a bit');
-    console.log(soundLevel,'sound Level');
     } else {
       setSoundLevel(soundLevel);
-      console.log('the sound is MAXIMAL');
     }
   }
   const toggleVolumeDown = () => {
     if (soundLevel >= (0.1)) {
     setSoundLevel(soundLevel - 0.1);
-    console.log('the sound was turned down a bit');
-    console.log(soundLevel,'sound Level');
     } else {
       setSoundLevel(soundLevel);
-      console.log('the sound is MINIMAL');
     }
   }
 
@@ -125,30 +117,3 @@ export default function RadioContextProvider(props) {
     </RadioContext.Provider>
   );
 }
-
-// const { arrayOf, bool, func, number, shape, string } = PropTypes;
-
-// RadioContext.Provider.propTypes = {
-//   value: shape({
-//     currentStation: string.isRequired,
-//     isInfoLoading: bool.isRequired,
-//     togglePowerButton: func.isRequired,
-//     stations: arrayOf(
-//       shape({
-//         id: number.isRequired,
-//         title: string.isRequired,
-//         description: string,
-//         share: string,
-//         picture: string,
-//         picture_small: string,
-//         picture_medium: string,
-//         picture_big: string,
-//         picture_xl: string,
-//         tracklist: string,
-//         type: string      
-//       })
-//     ),
-//     toggleControls: func.isRequired,
-//     toggleColorTheme: func,
-//   }).isRequired,
-// };

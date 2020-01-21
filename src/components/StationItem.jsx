@@ -74,7 +74,9 @@ export default function StationItem({ id, title, type, description, tracklist, l
       <div className={isPlayerActive ? 'player' : 'player-hidden' }>
         <ReactPlayer 
           url={playerLink} 
-          playing={(isPlayerActive && currentStation) ? true : false}
+          // playing={(isPlayerActive && currentStation) ? true : false}
+          playing={isPlayerActive}
+
           volume= {soundLevel}
         />
       </div>
