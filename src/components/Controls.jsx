@@ -8,9 +8,9 @@ export default function Controls({ logo}) {
   
   return (
     <div className="controls">
-      <button className="volume-down" onClick={toggleVolumeDown}><img src="../icons/volumeDown.png" alt="volume down icon" /></button>
+      <button className="volume-down" onClick={toggleVolumeDown}><img src="icons/volumeDown.png" alt="volume down icon" /></button>
       <img className="station-logo" src={logo} alt="station logo" />
-      <button className="volume-up"  onClick={toggleVolumeUp}><img src="../icons/volumeUp.png" alt="volume up icon" /></button>
+      <button className="volume-up"  onClick={toggleVolumeUp}><img src="icons/volumeUp.png" alt="volume up icon" /></button>
       <p></p>
     </div>
   );

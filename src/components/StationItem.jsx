@@ -6,7 +6,7 @@ import callSpecificTracklist from '../api/callSpecificTracklist';
 import '../styles/StationItem.css';
 
 export default function StationItem({ id, title, type, description, tracklist, logo, ...props }) {
-  const {currentStation, soundLevel, toggleControls, colorClassName } = useContext(RadioContext);
+  const {currentStation, soundLevel, toggleControls, colorClassName, isPowerON } = useContext(RadioContext);
   
   const [showExtraInfo, setShowExtraInfo] = useState(false);
   const [isPlayerActive, setPlayerActive] = useState(false);  
@@ -22,14 +22,13 @@ export default function StationItem({ id, title, type, description, tracklist, l
       setTrackData(result.data);
     }, 
     error => {
-      console.error(error, "Error in URL fetch");
+      console.error(error, "Error in URL fetch. Number of requests exceeded");
     });  
   }
 
   useEffect(() => {
     getSongURLs();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[currentStation])
+  },[isPowerON])
 
 
   const tracksInfo = trackData.map(({ album, artist, link, title }) => {
@@ -46,7 +45,7 @@ export default function StationItem({ id, title, type, description, tracklist, l
     </ol>
   </>
 
-  const playerLink = tracksInfo[songIndex] ? (tracksInfo[songIndex].link) : "https://www.youtube.com/watch?v=AFMuxl3cSU4";
+  const playerLink = tracksInfo[songIndex] ? (tracksInfo[songIndex].link) : "https://music.youtube.com/watch?v=qAxU9vNPqCg&list=RDAMVMqAxU9vNPqCg";
 
   const handleExtraInfoClick = () => setShowExtraInfo(!showExtraInfo);
   const handlePlayClick = () => setPlayerActive(!isPlayerActive);
@@ -60,7 +59,7 @@ export default function StationItem({ id, title, type, description, tracklist, l
         >
         <div className="station-base-info">
           <span className="station-name" >{title ? title : 'Some Title'}</span>
-          <button className="play-btn" onClick={handlePlayClick}><img src="../icons/play.png" alt="play button"/></button>
+          <button className="play-btn" onClick={handlePlayClick}><img src="icons/play.png" alt="play button"/></button>
           <button className="extra-info-btn" onClick={handleExtraInfoClick}><i>More information</i> </button>
         </div>       
         <Controls 
@@ -71,12 +70,10 @@ export default function StationItem({ id, title, type, description, tracklist, l
       <div className={ showExtraInfo ? 'info-active' : 'info-hidden' }>
         {infoBlock}
       </div>
-      <div className={isPlayerActive ? 'player' : 'player-hidden' }>
+      <div className={isPlayerActive ? 'player' : 'player player-hidden' } type="text/html" >
         <ReactPlayer 
-          url={playerLink} 
-          // playing={(isPlayerActive && currentStation) ? true : false}
-          playing={isPlayerActive}
-
+          playing = {(isPlayerActive && currentStation)}
+          url = { playerLink }
           volume= {soundLevel}
         />
       </div>

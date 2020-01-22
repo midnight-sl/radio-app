@@ -13,6 +13,7 @@ export default function RadioContextProvider(props) {
   const [isThemeNeon, setIsThemeNeon] = useState(false);
   const [isThemePastel, setIsThemePastel] = useState(false);
   const [colorClassName, setColorClassName] = useState('');
+  const [isPowerON, setIsPowerON] = useState(false);
 
   useEffect(() => {
     getStationsInfo(); 
@@ -32,6 +33,7 @@ export default function RadioContextProvider(props) {
   }    
 
   const togglePowerButton = () => {
+    setIsPowerON(!isPowerON);
     if (currentStation) {
       setCurrentStation('');
     } else {
@@ -110,7 +112,8 @@ export default function RadioContextProvider(props) {
         toggleNeonTheme,
         togglePastelTheme,
         toggleVolumeUp,
-        toggleVolumeDown
+        toggleVolumeDown,
+        isPowerON
       }}
     >
       {props.children}

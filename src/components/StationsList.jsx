@@ -16,7 +16,7 @@ export default function StationsList() {
       <StationItem key={id} id={id} title={title} tracklist={tracklist} type={type} logo={picture} />
   ));
 
-  const spinnerDiv = <div id="spinner"><img src="../icons/loader.png" alt="loader" /></div>
+  const spinnerDiv = <div id="spinner"><img src="icons/loader.png" alt="loader" /></div>
 
 
   return (

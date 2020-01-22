@@ -17,7 +17,7 @@ export default function Header() {
         onClick={togglePowerButton}
         tabIndex="0"
         title="ON/OFF"> 
-        <img src="../icons/off.png" alt="on/off button"/>
+        <img src="icons/off.png" alt="on/off button"/>
       </button>
       <div className="colorTheme">
         <button className="dark" onClick={toggleDarkTheme} title="Go to the Night mode">Night Mode</button>
