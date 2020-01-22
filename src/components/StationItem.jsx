@@ -5,7 +5,7 @@ import Controls from './Controls';
 import callSpecificTracklist from '../api/callSpecificTracklist';
 import '../styles/StationItem.css';
 
-export default function StationItem({ id, title, type, description, tracklist, logo, ...props }) {
+export default function StationItem({ id, title, type, tracklist, logo, ...props }) {
   const {currentStation, soundLevel, toggleControls, colorClassName, isPowerON } = useContext(RadioContext);
   
   const [showExtraInfo, setShowExtraInfo] = useState(false);
@@ -38,7 +38,7 @@ export default function StationItem({ id, title, type, description, tracklist, l
   
   const infoBlock = 
   <>
-    <p>You are listening to {title} music on Deezer {type}. {(description) ? description : 'It'} can be reached online via <a href={tracklist}>{tracklist}</a></p>
+    <p>You are listening to {title} music on Deezer {type}. It can be reached online via <a href={tracklist}>{tracklist}</a></p>
     <p>{title} Playlist:</p>
     <ol>
       {tracksInfo.map(({ artist, songTitle, album }, key) => <li key={key}>{artist} - "{songTitle}" from "{album}" album.</li> )}
@@ -72,8 +72,9 @@ export default function StationItem({ id, title, type, description, tracklist, l
       </div>
       <div className={isPlayerActive ? 'player' : 'player player-hidden' } type="text/html" >
         <ReactPlayer 
-          playing = {(isPlayerActive && currentStation)}
-          url = { playerLink }
+          playing = { (isPlayerActive && currentStation) }
+          // url = { playerLink }  // currently player cannot reproduce deezer tracks :(
+          url = {'https://music.youtube.com/watch?v=qAxU9vNPqCg&list=RDAMVMqAxU9vNPqCg'}
           volume= {soundLevel}
         />
       </div>

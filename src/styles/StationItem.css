@@ -62,7 +62,7 @@ span {
  }
 
 .player {
-  background-color: rgb(204, 176, 233);
+  display: flex;
   justify-content: center;
 }
 .player-hidden {
